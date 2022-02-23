@@ -12,6 +12,10 @@ jobs:
           # Codecov needs fetch-depth > 1
           fetch-depth: 2
       - name: 'Set up JDKs'
+        env:
+          GRADLE_ENTERPRISE_CACHE_USERNAME: ${{ secrets.SPOCK_BUILD_CACHE_USERNAME }}
+          GRADLE_ENTERPRISE_CACHE_PASSWORD: ${{ secrets.SPOCK_BUILD_CACHE_PASSWORD }}
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
         uses: ./.github/actions/setup-build-env
         with:
           additional-java-version: 8
@@ -23,4 +27,4 @@ jobs:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: --no-parallel --stacktrace build codeCoverageReport "-Dvariant=2.5" "-DjavaVersion=8"
+          arguments: --no-parallel --stacktrace build codeCoverageReport -Dvariant=2.5 -DjavaVersion=8

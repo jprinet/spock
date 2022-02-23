@@ -11,3 +11,19 @@ gradlePlugin {
     }
   }
 }
+
+//allprojects {
+//  java {
+//    toolchain {
+//      languageVersion = JavaLanguageVersion.of(8)
+//    }
+//  }
+//
+//  tasks.withType(JavaCompile) {
+//    javaCompiler = javaToolchains.compilerFor {
+//      languageVersion = JavaLanguageVersion.of(8)
+//    }
+//  }
+//}
+//
+

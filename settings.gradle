@@ -69,7 +69,7 @@ buildCache {
     enabled = false //!isCiServer
   }
   remote(HttpBuildCache) {
-    url = uri("https://cache-node-solutions.grdev.net/cache/exp5/")
+    url = uri("https://cache-node-solutions.grdev.net/cache/exp5-3/")
     push = true
     credentials {
       username = System.getenv("GRADLE_ENTERPRISE_CACHE_USERNAME")
