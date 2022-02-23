@@ -25,7 +25,7 @@ dependencyResolutionManagement {
   }
 }
 
-def gradleEnterpriseServer = "https://ge.spockframework.org"
+def gradleEnterpriseServer = "https://ge.solutions-team.gradle.com" //"https://ge.spockframework.org"
 def isCiServer = System.env["CI"] || System.env["GITHUB_ACTIONS"]
 def spockBuildCacheUsername = ext.has('spockBuildCacheUsername') ? ext['spockBuildCacheUsername'] : null
 def spockBuildCachePassword = ext.has('spockBuildCachePassword') ? ext['spockBuildCachePassword'] : null
@@ -66,16 +66,16 @@ gradleEnterprise {
 
 buildCache {
   local {
-    enabled = !isCiServer
+    enabled = false //!isCiServer
   }
-  remote(HttpBuildCache) {
-    url = uri("$gradleEnterpriseServer/cache/")
-    push = isCiServer && spockBuildCacheUsername && spockBuildCachePassword
-    credentials {
-      username = spockBuildCacheUsername ?: null
-      password = spockBuildCachePassword ?: null
-    }
-  }
+  //remote(HttpBuildCache) {
+  //  url = uri("$gradleEnterpriseServer/cache/")
+  //  push = isCiServer && spockBuildCacheUsername && spockBuildCachePassword
+  //  credentials {
+  //    username = spockBuildCacheUsername ?: null
+  //    password = spockBuildCachePassword ?: null
+  //  }
+  //}
 }
 
 include "spock-bom"
