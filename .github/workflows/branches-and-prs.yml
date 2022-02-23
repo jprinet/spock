@@ -14,7 +14,7 @@ jobs:
       - name: 'Set up JDKs'
         uses: ./.github/actions/setup-build-env
         with:
-          additional-java-version: 11
+          additional-java-version: 8
       - name: 'Build Spock'
         # secrets are not injected for pull requests
         env:
@@ -23,4 +23,4 @@ jobs:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: --no-parallel --stacktrace build codeCoverageReport
+          arguments: --no-parallel --stacktrace build codeCoverageReport "-Dvariant=2.5" "-DjavaVersion=8"
