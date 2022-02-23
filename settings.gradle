@@ -68,14 +68,14 @@ buildCache {
   local {
     enabled = false //!isCiServer
   }
-  //remote(HttpBuildCache) {
-  //  url = uri("$gradleEnterpriseServer/cache/")
-  //  push = isCiServer && spockBuildCacheUsername && spockBuildCachePassword
-  //  credentials {
-  //    username = spockBuildCacheUsername ?: null
-  //    password = spockBuildCachePassword ?: null
-  //  }
-  //}
+  remote(HttpBuildCache) {
+    url = uri("https://cache-node-solutions.grdev.net/cache/")
+    push = true
+    credentials {
+      username = System.getenv("GRADLE_ENTERPRISE_CACHE_USERNAME")
+      password = System.getenv("GRADLE_ENTERPRISE_CACHE_PASSWORD")
+    }
+  }
 }
 
 include "spock-bom"
