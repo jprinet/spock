@@ -27,4 +27,4 @@ jobs:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: --no-parallel --stacktrace build codeCoverageReport -Dvariant=2.5 -DjavaVersion=8
+          arguments: --no-parallel --stacktrace --rerun-tasks build codeCoverageReport -Dvariant=2.5 -DjavaVersion=8
